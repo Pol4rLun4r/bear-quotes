@@ -4,23 +4,30 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "test-core": "jest",
+    "test:watch": "jest --watch",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri"
   },
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "@tauri-apps/api": "^2",
-    "@tauri-apps/plugin-opener": "^2"
+    "@tauri-apps/plugin-opener": "^2",
+    "better-sqlite3": "^12.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
     "typescript": "~5.8.3",
-    "vite": "^7.0.4",
-    "@tauri-apps/cli": "^2"
+    "vite": "^7.0.4"
   }
 }
