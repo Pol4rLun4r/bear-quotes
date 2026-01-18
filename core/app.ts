@@ -1,13 +1,15 @@
+// database
 import { createDatabase } from "./db/connection"
-import createClientService from "./services/client.service";
+
+// Factories
+import { createAppServices, createAppQueries } from "./factories/AppFactory"
 
 const createApp = (config: { dbPath: string }) => {
     const db = createDatabase({ ...config });
 
-    const clientService = createClientService(db);
-
     return {
-        clientService
+        createAppServices: createAppServices(db),
+        createAppQueries: createAppQueries(db),
     }
 }
 
