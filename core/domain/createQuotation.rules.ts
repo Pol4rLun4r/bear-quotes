@@ -42,7 +42,7 @@ const createQuotationRules = ({ name, document, type_client, notes, client_id, s
 
         // Validate client type
         if (type_client !== "Nacional" && type_client !== "Internacional") {
-            return failure("Invalid client type");
+            return failure("Invalid client type. Must be either 'Nacional' or 'Internacional'");
         }
 
         return success({ name, document, type_client, notes, status: status ?? DEFAULT_STATUS }, "NEW_CLIENT");
