@@ -1,4 +1,5 @@
-import type { Database } from "better-sqlite3";
+// database
+import type { Database as DatabaseType } from "better-sqlite3";
 
 export type ClientCategory = "Nacional" | "Internacional";
 
@@ -20,7 +21,7 @@ export type QuotationType = {
     updated_at: string;
 }
 
-export const ApplySchema = (db: Database) => {
+export const ApplySchema = (db: DatabaseType) => {
     db.prepare(`
         CREATE TABLE IF NOT EXISTS clients (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

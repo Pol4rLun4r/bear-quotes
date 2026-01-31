@@ -1,31 +1,35 @@
 // types
-import type { DB } from "../db/connection";
+import type { Database } from "better-sqlite3";
 import type { ClientType } from "../db/schema";
 
-export type ClientInput = Omit<
+export type ClientQuery = Omit<
     ClientType,
     "id" | "created_at" | "updated_at"
 >;
 
-export const createClientRepository = (db: DB) => ({ ...data }: ClientInput) => {
+export const createClientRepository = (db: Database) => ({ ...data }: ClientQuery) => {
     // check or insert client
-    db.prepare(`
-        INSERT OR IGNORE INTO clients (name, document, type_client, notes)
+    const clientId = db.prepare(`
+        INSERT INTO clients (name, document, type_client, notes)
         VALUES (?, ?, ?, ?) 
     `).run(data.name, data.document, data.type_client, data.notes);
 
-    // get client id
+    return clientId.lastInsertRowid;
+}
+
+export const getClientByNameAndDocumentRepository = (db: Database) => (name: string | undefined, document: string | undefined) => {
+    // get client by name and document
     const client = db.prepare(`
-        SELECT id
+        SELECT *
         FROM clients
         WHERE name = ? AND document = ?
         LIMIT 1
-    `).get(data.name, data.document) as ClientType
+    `).get(name, document) as ClientType | undefined;
 
     return client;
 }
 
-export const getClientByIdRepository = (db: DB) => (id: number) => {
+export const getClientByIdRepository = (db: Database) => (id?: number) => {
     // get client by id
     const client = db.prepare(`
         SELECT *

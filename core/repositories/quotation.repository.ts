@@ -1,13 +1,13 @@
 // types
-import type { DB } from "../db/connection";
+import type { Database } from "better-sqlite3";
 import type { QuotationType } from "../db/schema";
 
-export type QuotationInput = Omit<
+export type QuotationQuery = Omit<
     QuotationType,
     "id" | "created_at" | "updated_at"
 >;
 
-export const createQuotationRepository = (db: DB) => ({ ...data }: QuotationInput) => {
+export const createQuotationRepository = (db: Database) => ({ ...data }: QuotationQuery) => {
     // get quotation id
     const quotation = db.prepare(`
         INSERT INTO quotations (client_id, status)
@@ -17,7 +17,7 @@ export const createQuotationRepository = (db: DB) => ({ ...data }: QuotationInpu
     return quotation.lastInsertRowid as number;
 };
 
-export const getQuotationByIdRepository = (db: DB) => (id: number) => {
+export const getQuotationByIdRepository = (db: Database) => (id: number) => {
     // get quotation by id
     const quotation = db.prepare(`
         SELECT * FROM quotations WHERE id = ? LIMIT 1
@@ -26,7 +26,7 @@ export const getQuotationByIdRepository = (db: DB) => (id: number) => {
     return quotation as QuotationType | undefined;
 };
 
-export const getAllQuotationsRepository = (db: DB) => {
+export const getAllQuotationsRepository = (db: Database) => {
     // get all quotations
     const quotations = db.prepare(`
         SELECT * FROM quotations

@@ -8,4 +8,26 @@ module.exports = {
   testEnvironment: "node",
   testMatch: ["**/*.test.ts"],
   clearMocks: true,
+  extensionsToTreatAsEsm: [".ts"],
+  moduleNameMapper: {
+    "^(\\.{1,2}/.*)\\.js$": "$1",
+  },
+  transform: {
+    "^.+\\.tsx?$": ["ts-jest", {
+      useESM: true,
+      tsconfig: {
+        module: "ESNext",
+        esModuleInterop: true,
+        allowSyntheticDefaultImports: true,
+      }
+    }],
+    "^.+\\.jsx?$": ["ts-jest", {
+      useESM: true,
+      tsconfig: {
+        module: "ESNext",
+        esModuleInterop: true,
+        allowSyntheticDefaultImports: true,
+      }
+    }],
+  },
 };

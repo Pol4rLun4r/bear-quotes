@@ -2,7 +2,7 @@ import { createDatabase } from "../../db/connection";
 
 describe("Database connection", () => {
     // Inicializa o banco de dados em memória para testes
-    const db = createDatabase({ dbPath: ":memory:" });
+    const db = createDatabase(":memory:");
 
     // Teste básico para verificar se o banco foi criado e schema aplicado
     it("should create database and apply schema", () => {

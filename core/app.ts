@@ -1,16 +1,17 @@
-// database
-import { createDatabase } from "./db/connection"
+import express from "express";
 
-// Factories
-import { createAppServices, createAppQueries } from "./factories/AppFactory"
+// routes
+import quotationRoutes from "./Routes/quotation.routes";
+import type { Database } from "better-sqlite3";
 
-const createApp = (config: { dbPath: string }) => {
-    const db = createDatabase({ ...config });
+export const createApp = (db: Database) => {
+    const app = express();
+    
+    // middleware
+    app.use(express.json());
 
-    return {
-        createAppServices: createAppServices(db),
-        createAppQueries: createAppQueries(db),
-    }
+    // using routes
+    app.use("/quotations", quotationRoutes(db));
+
+    return app;
 }
-
-export default createApp;
