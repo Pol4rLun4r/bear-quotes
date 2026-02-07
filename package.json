@@ -13,13 +13,18 @@
     "build-core": "tsc core/cli.ts core/commands/*.ts --outDir dist-core --module commonjs"
   },
   "dependencies": {
+    "@mantine/core": "^8.3.14",
+    "@mantine/hooks": "^8.3.14",
+    "@reduxjs/toolkit": "^2.11.2",
+    "@tabler/icons-react": "^3.36.1",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
     "better-sqlite3": "^12.5.0",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2",
@@ -32,6 +37,9 @@
     "@vitejs/plugin-react": "^4.6.0",
     "cross-env": "^10.1.0",
     "jest": "^30.2.0",
+    "postcss": "^8.5.6",
+    "postcss-preset-mantine": "^1.18.0",
+    "postcss-simple-vars": "^7.0.1",
     "supertest": "^7.2.2",
     "ts-jest": "^29.4.6",
     "typescript": "~5.8.3",
