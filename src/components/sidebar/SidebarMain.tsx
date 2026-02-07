@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Stack, FloatingIndicator } from "@mantine/core"
 
 // styles
-import classes from './Navbar.module.css';
+import classes from './Sidebar.module.css';
 
 // redux
 import { useDispatch } from 'react-redux';
@@ -13,9 +13,9 @@ import { setActiveTab } from '../../redux/tabSlice';
 import type { AppDispatch } from '../../redux/store';
 
 // components
-import { NavbarTab, tabsData } from './NavbarTabs';
+import { SidebarTab, tabsData } from './SidebarTabs';
 
-const NavbarMain = () => {
+const SidebarMain = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const [active, setActive] = useState(0);
@@ -33,7 +33,7 @@ const NavbarMain = () => {
     }
 
     const tabs = tabsData.map((tab, index) => (
-        <NavbarTab
+        <SidebarTab
             {...tab}
             ref={setControlRef(index)}
             key={tab.label}
@@ -43,7 +43,7 @@ const NavbarMain = () => {
     ))
 
     return (
-        <Stack gap={0} mt={50} ref={setRootRef} className={classes.main}>
+        <Stack gap={0} ref={setRootRef} className={classes.main}>
             {tabs}
 
             <FloatingIndicator
@@ -55,4 +55,4 @@ const NavbarMain = () => {
     )
 }
 
-export default NavbarMain
+export default SidebarMain

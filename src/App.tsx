@@ -3,7 +3,7 @@ import '@mantine/core/styles.css';
 import { MantineProvider } from "@mantine/core"
 
 // components
-import Navbar from './components/navbar/Navbar';
+import Sidebar from './components/sidebar/Sidebar';
 import MainContainer from './components/mainContainer/MainContainer';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
       defaultColorScheme='dark'
     >
       <div style={{ display: 'flex' }}>
-        <Navbar />
+        <Sidebar />
         <MainContainer />
       </div>
     </MantineProvider>

@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+
+// slices
 import tabSlice from "./tabSlice";
+import collapsedSlice from "./collapsedSlice";
 
 const store = configureStore({
     reducer: {
-        tab: tabSlice
+        tab: tabSlice,
+        collapsed: collapsedSlice
     },
 });
 

@@ -1,5 +1,5 @@
 // styles
-import classes from './Navbar.module.css'
+import classes from './Sidebar.module.css'
 
 // mantine
 import { Stack, useMantineColorScheme, useComputedColorScheme } from '@mantine/core'
@@ -8,9 +8,9 @@ import { Stack, useMantineColorScheme, useComputedColorScheme } from '@mantine/c
 import { IconSettings2, IconSun, IconMoon } from '@tabler/icons-react'
 
 // components
-import { NavbarTab } from './NavbarTabs';
+import { SidebarTab } from './SidebarTabs';
 
-const NavbarOptions = () => {
+const SidebarOptions = () => {
     const { setColorScheme } = useMantineColorScheme();
     const computedColorScheme = useComputedColorScheme('dark');
 
@@ -20,12 +20,12 @@ const NavbarOptions = () => {
 
     return (
         <Stack gap={0} className={classes.second}>
-            <NavbarTab
+            <SidebarTab
                 icon={computedColorScheme === 'light' ? IconMoon : IconSun}
                 label={computedColorScheme === 'light' ? 'Dark mode' : 'Light mode'}
                 onClick={colorSchemeHandle}
             />
-            <NavbarTab
+            <SidebarTab
                 icon={IconSettings2}
                 label='Settings'
             />
@@ -33,4 +33,4 @@ const NavbarOptions = () => {
     )
 };
 
-export default NavbarOptions
+export default SidebarOptions
